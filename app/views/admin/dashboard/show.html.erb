@@ -1,2 +1,19 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Admin Dashboard</h1>
+
+
+<div>
+<table class="table table-bordered">
+<tr>
+<th>Query</th>
+<th>Count</th>
+</tr>
+<tr>
+<td>Total number of Unique Products</td>
+<td><%= @count_product.length %></td>
+</tr>
+<tr>
+<td>Total number of Product Categories</td>
+<td><%= @count_category.length%></td>
+</tr>
+</table>
+</div>
