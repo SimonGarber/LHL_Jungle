@@ -1,11 +1,60 @@
 <section class="orders-show">
 
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
+    <h1 Order #<%= @order.id %></h1>
+    <h2 style="display:block"> Order Summary</h2>
   </header>
 
-  <div class="order-summary jumbotron">
+  <div>
     <h4>Thank you for your order!</h4>
+    <div>
+    <table class = "table table-bordered">
+    <thead>
+    <tr> 
+    <th> Item </th>
+    <th> Description </th>
+    <th> Price </th>
+    <th> QTY </th>
+    <th> Total </th>
+
+    </tr>
+    </thead>
+    <% @order.line_items.each do |item| %>
+    
+    <tr>
+      <article class='product'>
+      <header>
+      <td>
+      <h4><%=item.product.name%></h4>
+       <%= image_tag item.product.image.tiny%>
+       </td>
+       </header>
+       
+       <td>
+       <p class='description'><%= item.product.description%></p>
+       </td>
+      
+       </div>
+      <td><%= humanized_money_with_symbol item.item_price_cents / 100 %></td>
+      <td><%= item.quantity %></td>
+      <td><%= humanized_money_with_symbol item.total_price %></td>
+    </tr>
+
+      <% end %>
+      </table>
+      <table class= "table table-bordered">
+      <tr>
+      <th>Order Number</th>
+      <th>Account Email</th>
+      <th>Sub Total</th>
+      <tr>
+      <td><%= @order.id %>
+      <td><%= @order.email %>
+      <td><%= humanized_money_with_symbol @order.total_cents / 100 %>
+      </tr>
+      </table>
+
+    </div>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
