@@ -10,7 +10,7 @@ http_basic_authenticate_with :name => ENV["HTTP_BASIC_USER"],
   def new
     @product = Product.new
   end
-
+  
   def create
     @product = Product.new(product_params)
 
